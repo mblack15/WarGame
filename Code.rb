@@ -10,6 +10,20 @@ deck2_cards_p1= Array.new
 switchy = Array.new
 total_cards_p1 = cards_p1.length
 total_cards_p2 = cards_p2.length
+
+puts "Hello and Welcome to War!"
+#Instructions
+print "Would you like to read the instructions? "
+instruction = gets.chomp
+if instruction.downcase == ("yes" or "y")
+	puts "War is a two person card game.  Players place forward their top card and the highest card (Aces being high) wins.\nIn the case of a tie, two cards are put facedown and the third row of cards are compared. Winner takes all. \nTo win, you must take all of the cards."
+end
+#Asks names: (name_1 and name_2)
+print "What are your names?\nPlayer 1: "
+name_1= gets
+print "Player 2: "
+name_2= gets
+
 while(total_cards_p1 != 0 and total_cards_p2 != 0) # One player has no cards, game is over'
 	while(cards_p1.length != count or cards_p2.length != count) # One player has no cards left in their deck
 		if cards_p1[count] > cards_p2[count] # If P1's card is bigger
