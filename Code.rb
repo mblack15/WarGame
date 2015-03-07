@@ -26,19 +26,34 @@ name_2= gets
 
 while(total_cards_p1 != 0 and total_cards_p2 != 0) # One player has no cards, game is over'
 	while(cards_p1.length != count or cards_p2.length != count) # One player has no cards left in their deck
+		#---A vs. An----
+		if cards_pl[count].include? == ((2 or 3) || (4 or 5)) ||(6 or 7) or (9 or 1#Ace)
+			a_or_an_p1= "a"
+		else
+			a_or_an_p1= "an"
+		end
+		if cards_p2[count].include? == ((2 or 3) || (4 or 5)) ||(6 or 7) or (9 or 1#Ace)
+			a_or_an_p2= "a"
+		else
+			a_or_an_p2= "an"
+		end
+		#---A vs. An ends----
+	gets "#{name_1} places a(n) #{cards_p1[count]}.  #{name_2} places #{a_or_an_p1} #{card_p2[count]}." #Relays info
 		if cards_p1[count] > cards_p2[count] # If P1's card is bigger
+		gets "#{name_1} wins."
 			deck2_cards_p1.push(cards_p1[count]) # P1 Keeps their card
 			deck2_cards_p1.push(cards_p2[count]) # P1 Gets P2's cards
 			card_count_nd_p1 += 2
 			total_cards_p1 += 1
 			total_cards_p2 -= 1
 		elsif cards_p1[count] < cards_p2[count] # If P2's card is bigger
+		gets "#{name_2} wins."
 			deck2_cards_p2.push(cards_p1[count])
 			deck2_cards_p2.push(cards_p2[count])
 			card_count_nd_p2 += 2
 			total_cards_p2 += 1
 			total_cards_p1 -= 1
-		else # Need to add something if one of the plays does not have an additonal 3 cards
+		else # Need to add something if one of the players does not have an additonal 3 cards
 			if (cards_p1.length - count) <= 3 || (cards_p1.length - count) <= 3
 				if (cards_p1.length - count) >= 1 or (cards_p1.length - count) >= 1
 					if cards_p1[count + 1] < cards_p2[count + 1] # There are less than 3 cards left in the deck
@@ -104,6 +119,15 @@ while(total_cards_p1 != 0 and total_cards_p2 != 0) # One player has no cards, ga
 		deck2_cards_p1 = switchy
 		p2_cards = deck2_cards_p2
 		deck2_cards_p2 = switchy
+	#End of Round:  Tells players how many cards each has
+	puts "#{name_1} now has #{total_cards_p1}."
+	puts "#{name_2} now has #{total_cards_p1}."
 	end
 	count = 0
 end
+#Tells who the final winner is
+if total_cards_p2 == 0:
+	puts "Congratulations #{Name_1}, you won the game!"
+if total_cards_p1 == 0:
+	puts "Congratulations #{Name_2}, you won the game!"
+
