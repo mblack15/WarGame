@@ -27,18 +27,33 @@ name_2= gets
 while(total_cards_p1 != 0 and total_cards_p2 != 0) # One player has no cards, game is over'
 	while(cards_p1.length != count or cards_p2.length != count) # One player has no cards left in their deck
 		#---A vs. An----
-		if cards_pl[count].include? == ((2 or 3) || (4 or 5)) ||(6 or 7) or (9 or 1#Ace)
+		if cards_pl[count].include? == ((2 or 3) || (4 or 5)) ||(6 or 7) or (9 or 14#Ace)
 			a_or_an_p1= "a"
 		else
 			a_or_an_p1= "an"
 		end
-		if cards_p2[count].include? == ((2 or 3) || (4 or 5)) ||(6 or 7) or (9 or 1#Ace)
+		if cards_p2[count].include? == ((2 or 3) || (4 or 5)) ||(6 or 7) or (9 or 14#Ace)
 			a_or_an_p2= "a"
 		else
 			a_or_an_p2= "an"
 		end
 		#---A vs. An ends----
-	gets "#{name_1} places a(n) #{cards_p1[count]}.  #{name_2} places #{a_or_an_p1} #{card_p2[count]}." #Relays info
+		#Substituting and displayind cards (ae: 11= joker)
+		card_display= "#{name_1} places #{a_or_an_p1} #{cards_p1[count]}.  #{name_2} places #{a_or_an_p2} #{card_p2[count]}." #Relays info
+		if card_display.include?  "14"
+			card_display.gsub!(/14/,"ace")
+		end
+		if card_display.include?"11"
+			card_display.gsub!(/11/,"jack")
+			end
+		if card_display.include?"12"
+			card_display.gsub!(/12/, "queen")
+			end
+		if card_display.include?  "13"
+			card_display.gsub!(/13/, "king")
+			end
+		puts card_display
+		#-- end of subsitution--	
 		if cards_p1[count] > cards_p2[count] # If P1's card is bigger
 		gets "#{name_1} wins."
 			deck2_cards_p1.push(cards_p1[count]) # P1 Keeps their card
